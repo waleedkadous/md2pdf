@@ -36,3 +36,7 @@ Repository = "https://github.com/waleedkadous/md2pdf"
 
 [project.scripts]
 md2pdf = "md2pdf:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+only-include = ["md2pdf.py"]
