@@ -51,8 +51,8 @@ def convert_md_to_html(md_file: Path, html_file: Path) -> None:
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
             line-height: 1.6;
             max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
+            margin: 20px auto;
+            padding: 0 10px;
             color: #333;
         }}
         h1 {{
