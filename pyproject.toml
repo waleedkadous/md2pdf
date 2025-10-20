@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "md2pdf-converter"
+version = "0.1.0"
+description = "Convert Markdown files to beautifully styled PDFs using headless Chrome"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+    {name = "Waleed Kadous", email = "waleed@kadous.org"},
+]
+keywords = ["markdown", "pdf", "converter", "chrome", "headless"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Text Processing :: Markup :: Markdown",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "markdown>=3.9",
+]
+
+[project.urls]
+Homepage = "https://github.com/waleedkadous/md2pdf"
+Issues = "https://github.com/waleedkadous/md2pdf/issues"
+Repository = "https://github.com/waleedkadous/md2pdf"
+
+[project.scripts]
+md2pdf = "md2pdf:main"
