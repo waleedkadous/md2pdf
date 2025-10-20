@@ -6,6 +6,7 @@ Usage:
     python md2pdf.py input.md  # Creates input.pdf
 """
 
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -13,9 +14,31 @@ from pathlib import Path
 import markdown
 
 
+def preprocess_markdown(content: str) -> str:
+    """Normalize markdown by adding blank lines before lists."""
+    lines = content.split('\n')
+    result = []
+
+    for i, line in enumerate(lines):
+        # Check if this line starts a list (unordered or ordered)
+        is_list_item = re.match(r'^(\s*)[-*+]\s', line) or re.match(r'^(\s*)\d+\.\s', line)
+
+        if is_list_item and i > 0:
+            prev_line = lines[i-1].strip()
+            # Add blank line before list if previous line is not blank and not a list item
+            prev_is_list = re.match(r'^[-*+]\s', prev_line) or re.match(r'^\d+\.\s', prev_line)
+            if prev_line and not prev_is_list:
+                result.append('')
+
+        result.append(line)
+
+    return '\n'.join(result)
+
+
 def convert_md_to_html(md_file: Path, html_file: Path) -> None:
     """Convert markdown file to styled HTML."""
     md_content = md_file.read_text()
+    md_content = preprocess_markdown(md_content)
 
     html_content = f"""
 <!DOCTYPE html>
@@ -66,6 +89,14 @@ def convert_md_to_html(md_file: Path, html_file: Path) -> None:
         }}
         ul {{
             padding-left: 24px;
+            list-style-type: disc;
+        }}
+        ol {{
+            padding-left: 24px;
+        }}
+        li {{
+            margin: 6px 0;
+            display: list-item;
         }}
         strong {{
             color: #0066cc;
@@ -87,7 +118,7 @@ def convert_md_to_html(md_file: Path, html_file: Path) -> None:
     </style>
 </head>
 <body>
-{markdown.markdown(md_content, extensions=['fenced_code', 'tables'])}
+{markdown.markdown(md_content, extensions=['extra', 'sane_lists', 'nl2br'])}
 </body>
 </html>
 """
