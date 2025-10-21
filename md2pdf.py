@@ -47,73 +47,134 @@ def convert_md_to_html(md_file: Path, html_file: Path) -> None:
     <meta charset="utf-8">
     <title>{md_file.stem}</title>
     <style>
+        /* Custom PDF styling */
         body {{
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 0 10px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 9pt;
+            line-height: 1.8;
             color: #333;
+            max-width: 100%;
         }}
+
+        /* Headings */
         h1 {{
-            border-bottom: 2px solid #0066cc;
-            padding-bottom: 10px;
+            font-size: 14pt;
+            font-weight: 600;
+            margin-top: 20pt;
+            margin-bottom: 10pt;
+            color: #1a1a1a;
         }}
+
         h2 {{
-            margin-top: 30px;
-            color: #0066cc;
+            font-size: 12pt;
+            font-weight: 600;
+            margin-top: 16pt;
+            margin-bottom: 8pt;
+            color: #2a2a2a;
         }}
+
         h3 {{
-            margin-top: 20px;
-            color: #333;
+            font-size: 10pt;
+            font-weight: 600;
+            margin-top: 12pt;
+            margin-bottom: 6pt;
+            color: #3a3a3a;
         }}
+
+        h4 {{
+            font-size: 9pt;
+            font-weight: 600;
+            margin-top: 10pt;
+            margin-bottom: 5pt;
+            color: #4a4a4a;
+        }}
+
+        /* Paragraphs */
+        p {{
+            margin-bottom: 10pt;
+        }}
+
+        /* Code blocks */
         pre {{
-            background-color: #f6f8fa;
-            border: 1px solid #e1e4e8;
-            border-radius: 6px;
-            padding: 16px;
-            overflow-x: auto;
-            font-size: 85%;
-            white-space: pre-wrap;
-        }}
-        code {{
-            background-color: #f6f8fa;
-            padding: 2px 6px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
             border-radius: 3px;
+            padding: 8pt;
             font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+            font-size: 7pt;
+            line-height: 1.6;
+            overflow-x: auto;
         }}
-        hr {{
-            border: 0;
-            border-top: 1px solid #e1e4e8;
-            margin: 24px 0;
+
+        code {{
+            font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+            font-size: 7pt;
+            background-color: #f5f5f5;
+            padding: 2pt 4pt;
+            border-radius: 3px;
         }}
-        ul {{
-            padding-left: 24px;
-            list-style-type: disc;
-        }}
-        ol {{
-            padding-left: 24px;
-        }}
-        li {{
-            margin: 6px 0;
-            display: list-item;
-        }}
-        strong {{
-            color: #0066cc;
-        }}
+
+        /* Tables */
         table {{
             border-collapse: collapse;
             width: 100%;
-            margin: 20px 0;
+            margin: 10pt 0;
+            font-size: 8pt;
         }}
-        th, td {{
-            border: 1px solid #e1e4e8;
-            padding: 8px 12px;
-            text-align: left;
-        }}
+
         th {{
-            background-color: #f6f8fa;
+            background-color: #f0f0f0;
             font-weight: 600;
+            padding: 8pt;
+            text-align: left;
+            border: 1px solid #ddd;
+        }}
+
+        td {{
+            padding: 6pt 8pt;
+            border: 1px solid #ddd;
+        }}
+
+        /* Lists */
+        ul, ol {{
+            margin: 8pt 0;
+            padding-left: 20pt;
+        }}
+
+        li {{
+            margin-bottom: 4pt;
+        }}
+
+        /* Links */
+        a {{
+            color: #0066cc;
+            text-decoration: none;
+        }}
+
+        /* Blockquotes */
+        blockquote {{
+            border-left: 4px solid #ddd;
+            margin: 12pt 0;
+            padding-left: 12pt;
+            color: #666;
+            font-style: italic;
+        }}
+
+        /* Horizontal rules */
+        hr {{
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 20pt 0;
+        }}
+
+        /* Strong/bold */
+        strong {{
+            font-weight: 600;
+        }}
+
+        /* Emphasis */
+        em {{
+            font-style: italic;
         }}
     </style>
 </head>
